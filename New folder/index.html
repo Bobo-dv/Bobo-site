@@ -1,0 +1,186 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Site</title>
+    <style>
+        /* Set the page background to black and text to white */
+        body { 
+            font-family: Arial, sans-serif; 
+            background: black; 
+            color: white; 
+            text-align: center; 
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container styling */
+        .container { 
+            max-width: 800px; 
+            margin: 20px auto; 
+            padding: 20px; 
+            background: #222; /* Dark gray background for the content area */
+            border-radius: 10px; 
+        }
+
+        /* Button styling */
+        .button { 
+            padding: 10px 20px; 
+            margin: 10px; 
+            border: none; 
+            background: #007BFF; 
+            color: white; 
+            cursor: pointer; 
+            border-radius: 5px; 
+        }
+
+        /* Styling for the blog posts */
+        .blog-post {
+            background-color: rgba(255, 255, 255, 0.1); /* Light white with transparency */
+            border-radius: 15px; /* Rounded corners */
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2); /* Soft shadow for depth */
+        }
+
+        /* Hide elements with the 'hidden' class */
+        .hidden { 
+            display: none; 
+        }
+
+        /* Styling for iframe and hidden by default */
+        iframe { 
+            width: 800px; /* Fixed width */
+            height: 600px; /* Fixed height */
+            border: none; 
+            margin: 10px 0; /* Add some space around the iframe */
+            display: none; /* Hide iframe initially */
+        }
+
+        /* Ensure game container stays centered on the page */
+        #gameContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Play button for games */
+        .play-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Frame for each game (800px by 600px) */
+        .game-frame {
+            width: 800px;
+            height: 600px;
+            border: 2px solid #fff; /* White border around the game frame */
+            margin: 10px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Play button styling inside the game frame */
+        .game-frame button {
+            position: absolute;
+            z-index: 10;
+        }
+        a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Borislav Stoyanov</h1>
+        <button class="button" onclick="showPage('about')">About Me</button>
+        <button class="button" onclick="showPage('games')">Games</button>
+    </div>
+    
+    <div id="about" class="container hidden">
+        <h2>About Me</h2>
+        <p>Hello! I'm Borislav a passionate developer.</p>
+        
+        <h3>My Blog</h3>
+        
+        <!-- Blog posts inside rounded rectangles -->
+        <div class="blog-post">
+            <h4>Проект: Lion Wings</h4>
+            <p>Ето тук са демотоата за сайта (всичко  може да се промени) <a href="html5up-massively\index.html">демо 1</a>; нема още демота за сега :]</p>
+        </div>
+        
+        <div class="blog-post">
+            <h4></h4>
+            <p></p>
+        </div>
+        
+        <button class="button" onclick="showPage('home')">Back</button>
+    </div>
+    
+    <div id="games" class="container hidden">
+        <h2>Games</h2>
+        <p>Hello, I'm very happy to announce that I'm starting to upload games here.</p>
+        
+        <!-- Game container -->
+        <div id="gameContainer">
+            <div class="game-frame">
+                <button class="play-button" onclick="playGame('game1')">Play Game</button>
+                <iframe id="game1" src="code/start.html"></iframe>
+                <script src="code/game.js"></script>
+            </div>
+        </div>
+
+        <div id="gameContainer">
+            <div class="game-frame">
+                <button class="play-button" onclick="playGame('game2')">Play Game</button>
+                <iframe id="game2" src="code/start.html"></iframe>
+                <script src="code/game.js"></script>
+            </div>
+        </div>
+        
+        <button class="button" onclick="showPage('home')">Back</button>
+    </div>
+    
+    <script>
+        function showPage(page) {
+            document.getElementById('about').classList.add('hidden');
+            document.getElementById('games').classList.add('hidden');
+            if (page !== 'home') document.getElementById(page).classList.remove('hidden');
+        }
+
+        // Function to display the game when the "Play" button is clicked
+        function playGame(gameId) {
+            var iframe = document.getElementById(gameId);
+            iframe.style.display = 'block'; // Show the iframe (game window)
+            var button = iframe.previousElementSibling; // The button preceding the iframe
+            button.style.display = 'none'; // Hide the play button
+        }
+    </script>
+</body>
+</html>
